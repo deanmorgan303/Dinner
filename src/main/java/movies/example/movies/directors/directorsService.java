@@ -53,5 +53,18 @@ public class directorsService {
         }
     }
 
+    @Transactional
+    public directors getDirector(Long personId){
+        boolean exist=DirectorsRepository.existsById(personId);
+        Optional <directors> optionalDirectors =DirectorsRepository.findDirectorbyId(personId);
+        directors Director =optionalDirectors.get();
+        if (!exist){
+            throw new IllegalStateException("Director does not exit");
+        }
+        else {
+           return Director;
+        }
+    }
+
 
 }
