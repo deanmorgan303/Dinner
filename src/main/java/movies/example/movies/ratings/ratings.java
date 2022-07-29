@@ -2,8 +2,11 @@ package movies.example.movies.ratings;
 
 import javax.persistence.*;
 
+@Entity
 @Table
 public class ratings {
+    @javax.persistence.Id
+    @Column(name="movie_id",nullable = false)
     private Long movie_id;
     private Long rating;
     private Long votes;

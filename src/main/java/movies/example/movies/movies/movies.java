@@ -1,9 +1,11 @@
 package movies.example.movies.movies;
 
 import javax.persistence.*;
-
+@Entity
 @Table
 public class movies {
+    @javax.persistence.Id
+    @Column (name="id",nullable = false)
     private Long id;
     private String title ;
     private Long year;
@@ -22,6 +24,7 @@ public class movies {
 
     public void setTitle( String title){
         this.title=title;
+
 
     }
 

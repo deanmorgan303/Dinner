@@ -64,4 +64,35 @@ public class moviesService {
         }
      }
 
+     @Transactional
+    public movies getMovie(Long Id){
+        boolean exist= MoviesRepository.existsById(Id);
+         Optional <movies> optionalMovies = MoviesRepository.findmoviebyid(Id);
+         movies Movie=optionalMovies.get();
+
+         if (!exist){
+             throw new IllegalStateException("movie not found");
+         }
+         else{
+             return Movie;
+         }
+
+     }
+
+    public movies getMovie(String tittle){
+        boolean exist =MoviesRepository.existByTittle(tittle);
+        Optional <movies> optionalMovies = MoviesRepository.findmoviebytitle(tittle);
+          movies Movie =optionalMovies.get();
+        if (!exist){
+            throw new IllegalStateException("movie not found");
+        }
+        else{
+            return Movie;
+        }
+
+
+    }
+
+
+
 }

@@ -1,10 +1,11 @@
 package movies.example.movies.directors;
 import javax.persistence.*;
-
-
+@Entity
 @Table
 public class directors {
     private Long movie_id;
+    @javax.persistence.Id
+    @Column(name = "person_id", nullable = false)
     private Long person_id;
 
     public Long getMovie_id(){

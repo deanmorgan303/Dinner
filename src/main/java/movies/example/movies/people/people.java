@@ -1,9 +1,11 @@
 package movies.example.movies.people;
 
 import javax.persistence.*;
-
+@Entity
 @Table
 public class people {
+    @javax.persistence.Id
+    @Column(name="id",nullable = false)
     private Long id;
     private String name;
     private Long birth;
