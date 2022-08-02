@@ -23,7 +23,7 @@ public class directorsController {
     }
 
     @GetMapping(path="/director/{personId}")
-    public directors getDirector(@PathVariable("dogId") Long peronId){
+    public directors getDirector(@PathVariable("personId") Long peronId){
         return DirectorsService.getDirector(peronId);
 
 

@@ -79,15 +79,21 @@ public class moviesService {
 
      }
 
-    public movies getMovie(String tittle){
+    public List<movies> getMovieByTitle(String tittle){
+
         boolean exist =MoviesRepository.existByTittle(tittle);
-        Optional <movies> optionalMovies = MoviesRepository.findmoviebytitle(tittle);
-          movies Movie =optionalMovies.get();
+        Optional <movies> optionalMovies = MoviesRepository.findMovieByTitle(tittle);
+        System. out. println("Gazaaaaaaaaaaaa");
+        System. out. println(optionalMovies);
+        List<movies> Movies =optionalMovies.stream().toList();
+
         if (!exist){
             throw new IllegalStateException("movie not found");
         }
         else{
-            return Movie;
+            //System. out. println("Gazaaaaaaaaaaaa");
+            //System. out. println(Movies);
+            return Movies;
         }
 
 

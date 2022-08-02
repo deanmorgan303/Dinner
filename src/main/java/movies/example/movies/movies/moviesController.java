@@ -7,7 +7,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path="api/movies/movies")
+@RequestMapping(path="api/movies")
 public class moviesController {
     private final moviesService MoviesService;
 
@@ -20,4 +20,13 @@ public class moviesController {
     public List<movies> getMovies(){
        return MoviesService.getMovies();
    }
+
+   @GetMapping(path="title/{movieTitle}")
+    public List<movies> getMovieByTitle(@PathVariable("movieTitle") String movieTitle){
+
+       return MoviesService.getMovieByTitle(movieTitle);
+
+   }
+
+
 }
