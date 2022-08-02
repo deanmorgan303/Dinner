@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface moviesRepository extends JpaRepository<movies,Long>{
     @Query("SELECT s FROM movies s where s.id=?1")
-    Optional <movies> findmoviebyid(long id);
+    Optional <movies> findMovieById(long id);
 
     @Query("SELECT s FROM movies s where s.title=?1")
     Optional <movies> findMovieByTitle(String title);

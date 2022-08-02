@@ -23,7 +23,7 @@ public class moviesService {
     @Transactional
     public void updateTitle(Long Id,String title){
         boolean exists=MoviesRepository.existsById(Id);
-        Optional <movies> optionalMovies=MoviesRepository.findmoviebyid(Id);
+        Optional <movies> optionalMovies=MoviesRepository.findMovieById(Id);
         movies Movies=optionalMovies.get();
 
         if (!exists){
@@ -39,7 +39,7 @@ public class moviesService {
     @Transactional
     public void updateYear(Long Id,Long year){
         boolean exists = MoviesRepository.existsById(Id);
-        Optional <movies> optionalMovies = MoviesRepository.findmoviebyid(Id);
+        Optional <movies> optionalMovies = MoviesRepository.findMovieById(Id);
         movies Movies=optionalMovies.get();
 
         if (!exists){
@@ -53,7 +53,7 @@ public class moviesService {
      @Transactional
      public void updateId(Long Id ,Long updateId){
         boolean exists = MoviesRepository.existsById(Id);
-        Optional <movies> optionalMovies = MoviesRepository.findmoviebyid(Id);
+        Optional <movies> optionalMovies = MoviesRepository.findMovieById(Id);
         movies Movies=optionalMovies.get();
 
         if (!exists){
@@ -65,9 +65,9 @@ public class moviesService {
      }
 
      @Transactional
-    public movies getMovie(Long Id){
+    public movies getMovieById(Long Id){
         boolean exist= MoviesRepository.existsById(Id);
-         Optional <movies> optionalMovies = MoviesRepository.findmoviebyid(Id);
+         Optional <movies> optionalMovies = MoviesRepository.findMovieById(Id);
          movies Movie=optionalMovies.get();
 
          if (!exist){
@@ -83,8 +83,7 @@ public class moviesService {
 
         boolean exist =MoviesRepository.existByTittle(tittle);
         Optional <movies> optionalMovies = MoviesRepository.findMovieByTitle(tittle);
-        System. out. println("Gazaaaaaaaaaaaa");
-        System. out. println(optionalMovies);
+
         List<movies> Movies =optionalMovies.stream().toList();
 
         if (!exist){
