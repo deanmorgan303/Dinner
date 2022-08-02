@@ -24,7 +24,7 @@ public class peopleService {
     @Transactional
     public void updateName(Long id,String name){
         boolean exists = PeopleRepository.existsById(id);
-        Optional <people> optionalPeople = PeopleRepository.findByPeopleById(id);
+        Optional <people> optionalPeople = PeopleRepository.findPeopleById(id);
         people People =optionalPeople.get();
         if(!exists){
             throw new IllegalStateException("person does not exists");
@@ -37,7 +37,7 @@ public class peopleService {
     @Transactional
     public void updateBirth(Long Id,Long Birth){
         boolean exists = PeopleRepository.existsById(Id);
-        Optional <people>  optionalPeople =PeopleRepository.findByPeopleById(Id);
+        Optional <people>  optionalPeople =PeopleRepository.findPeopleById(Id);
         people People = optionalPeople.get();
 
         if (!exists){
@@ -51,7 +51,7 @@ public class peopleService {
     @Transactional
     public void updateId(Long Id, Long updateId){
         boolean exists =PeopleRepository.existsById(Id);
-        Optional <people> optionalPeople = PeopleRepository.findByPeopleById(Id);
+        Optional <people> optionalPeople = PeopleRepository.findPeopleById(Id);
         people People = optionalPeople.get();
 
         if (!exists){
@@ -61,4 +61,33 @@ public class peopleService {
             People.setId(updateId);
         }
     }
+
+
+    @Transactional
+    public people getPeopleById(Long id){
+        boolean exist = PeopleRepository.existsById(id);
+        Optional <people> optionalPeople = PeopleRepository.findPeopleById(id);
+        people Person=optionalPeople.get();
+
+        if (!exist) {
+            throw new IllegalStateException("person does not exist");
+        }
+        else{
+            return Person;
+        }
+    }
+
+    @Transactional
+    public List<people> getPeopleByName(String Name){
+        boolean exist= PeopleRepository.existByName(Name);
+        Optional <people> optionalPeople=PeopleRepository.findPeopleByName(Name);
+        List <people> People = optionalPeople.stream().toList();
+        if (!exist){
+            throw new IllegalStateException("no such Name exit in the database");
+        }
+        else{
+            return People;
+        }
+    }
+
 }
