@@ -20,7 +20,7 @@ public class starsService {
         return StarsRepository.findAll();
     }
 
-    @Transactional
+    /*hg @Transactional
     public void updatePersonId(Long Id,Long updateId){
         boolean exists=StarsRepository.existsById(Id);
          Optional <stars> optionalStars = StarsRepository.findStarsById(Id);
@@ -31,9 +31,9 @@ public class starsService {
          else{
              Stars.setPerson_id(updateId);
          }
-    }
+    }*/
 
-    @Transactional
+    /*@Transactional
     public void updateMovieId(Long Id,Long updateId){
         boolean exists=StarsRepository.existsById(Id);
         Optional <stars> optionalStars = StarsRepository.findStarsById(Id);
@@ -44,6 +44,20 @@ public class starsService {
         else{
             Stars.setMovie_id(updateId);
         }
+    }*/
+
+
+    @Transactional
+    public List<stars> getMovies(long movie_id){
+        List<stars> Movies = StarsRepository.findMoviesID(movie_id);
+        return Movies;
     }
+
+    @Transactional
+    public List<stars> getStars (long person_id){
+        List<stars> Data =StarsRepository.findStarsById(person_id);
+        return Data;
+    }
+
 
 }

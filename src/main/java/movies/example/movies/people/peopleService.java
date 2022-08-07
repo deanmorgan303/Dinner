@@ -1,6 +1,8 @@
 package movies.example.movies.people;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,6 +40,8 @@ public class peopleService {
     public void updateBirth(Long Id,Long Birth){
         boolean exists = PeopleRepository.existsById(Id);
         Optional <people>  optionalPeople =PeopleRepository.findPeopleById(Id);
+        System.out.println(optionalPeople);
+
         people People = optionalPeople.get();
 
         if (!exists){
@@ -81,6 +85,7 @@ public class peopleService {
     public List<people> getPeopleByName(String Name){
         boolean exist= PeopleRepository.existByName(Name);
         Optional <people> optionalPeople=PeopleRepository.findPeopleByName(Name);
+
         List <people> People = optionalPeople.stream().toList();
         if (!exist){
             throw new IllegalStateException("no such Name exit in the database");
@@ -89,5 +94,14 @@ public class peopleService {
             return People;
         }
     }
+
+    @Transactional
+    public Page<people> getPeoplePage(int offset ,int pageSize){
+        Page <people> People= PeopleRepository.findAll(PageRequest.of(offset,pageSize));
+        return People;
+    }
+
+
+
 
 }

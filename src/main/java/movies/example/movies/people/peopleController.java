@@ -1,5 +1,6 @@
 package movies.example.movies.people;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,5 +30,10 @@ public class peopleController {
     @GetMapping(path="/{Name}")
     public List<people> getPeopleById(@PathVariable("Name")String Name){
         return PeopleService.getPeopleByName(Name);
+    }
+
+    @GetMapping(path="page/{offset}/{pageSize}")
+    public Page<people> getPeoplePage (@PathVariable("offset") int offset,@PathVariable("pageSize")int pageSize){
+        return PeopleService.getPeoplePage(offset,pageSize);
     }
 }

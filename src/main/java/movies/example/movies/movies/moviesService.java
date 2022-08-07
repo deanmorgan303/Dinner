@@ -1,6 +1,8 @@
 package movies.example.movies.movies;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -98,6 +100,16 @@ public class moviesService {
 
     }
 
+    @Transactional
+    public Page<movies> getAllMoviesPage(int offset,int pageSize){
+         Page <movies> Movies =MoviesRepository.findAll(PageRequest.of(offset,pageSize));
+         return Movies;
+    }
 
+
+    @Transactional
+    public List<String> getMoviesByDirector(long Id){
+       return null;
+    }
 
 }

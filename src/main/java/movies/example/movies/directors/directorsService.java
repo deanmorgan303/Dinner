@@ -1,6 +1,8 @@
 package movies.example.movies.directors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,8 +23,7 @@ public class directorsService {
         return DirectorsRepository.findAll();
 
     }
-
-    @Transactional
+/*    @Transactional
     public void updateMovieId (Long personId,Long movieId){
         boolean exists= DirectorsRepository.existsById(personId);
 
@@ -36,9 +37,9 @@ public class directorsService {
         }
 
 
-    }
+    }*/
 
-    @Transactional
+    /*@Transactional
     public void updatePersonId (Long personId ,Long updatedId){
         boolean exist =DirectorsRepository.existsById(personId);
 
@@ -51,20 +52,28 @@ public class directorsService {
         else {
             Directors.setPerson_id(updatedId);
         }
+    }*/
+
+    @Transactional
+    public List <directors> getMovies(Long personId){
+        System.out.println("GAZaaaaaaaaaaaaaaaaaa");
+
+        //boolean exist=DirectorsRepository.existsById(personId);
+        List <directors> Director =DirectorsRepository.findDirectorbyId(personId);
+        //List <directors> Director =optionalDirectors.stream().toList();
+        //System.out.println(exist);
+        //if (!exist){
+            //throw new IllegalStateException("Director does not exit");
+        //}
+        //else {
+           return Director;
+        //}
     }
 
     @Transactional
-    public directors getDirector(Long personId){
-        boolean exist=DirectorsRepository.existsById(personId);
-        Optional <directors> optionalDirectors =DirectorsRepository.findDirectorbyId(personId);
-        directors Director =optionalDirectors.get();
-        if (!exist){
-            throw new IllegalStateException("Director does not exit");
-        }
-        else {
-           return Director;
-        }
+    public Page<directors> getAllDirectorsPage(int offset,int pageSize){
+        Page<directors> Directors = DirectorsRepository.findAll(PageRequest.of(offset,pageSize));
+        return Directors;
     }
-
 
 }
