@@ -1,5 +1,8 @@
 package movies.example.movies.movies;
 
+import movies.example.movies.directors.*;
+
+import movies.example.movies.movies_directors.movies_directors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -17,6 +20,7 @@ public class moviesService {
     public moviesService(moviesRepository MoviesRepository){
         this.MoviesRepository= MoviesRepository;
     }
+
 
     public List<movies> getMovies(){
         return MoviesRepository.findAll();
@@ -108,8 +112,15 @@ public class moviesService {
 
 
     @Transactional
-    public List<String> getMoviesByDirector(long Id){
-       return null;
+    public List<movies_directors> getMoviesDirectors(){
+        List<movies_directors>  allMoviesDirectors = MoviesRepository.getMoviesDirectors();
+       return allMoviesDirectors;
+    }
+
+    @Transactional
+    public List<movies_directors> getMoviesByDirectorID(Long id){
+        List<movies_directors>  allMoviesByDirectorsID = MoviesRepository.getMoviesByDirectorsID(id);
+        return allMoviesByDirectorsID;
     }
 
 }

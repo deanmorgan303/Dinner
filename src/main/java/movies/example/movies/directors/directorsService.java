@@ -56,18 +56,10 @@ public class directorsService {
 
     @Transactional
     public List <directors> getMovies(Long personId){
-        System.out.println("GAZaaaaaaaaaaaaaaaaaa");
 
-        //boolean exist=DirectorsRepository.existsById(personId);
         List <directors> Director =DirectorsRepository.findDirectorbyId(personId);
-        //List <directors> Director =optionalDirectors.stream().toList();
-        //System.out.println(exist);
-        //if (!exist){
-            //throw new IllegalStateException("Director does not exit");
-        //}
-        //else {
+
            return Director;
-        //}
     }
 
     @Transactional

@@ -1,6 +1,9 @@
 package movies.example.movies.movies;
 
+import movies.example.movies.directors.directors;
 import javax.persistence.*;
+import java.util.List;
+
 @Entity
 @Table
 public class movies {
@@ -57,5 +60,15 @@ public class movies {
                 ", title=" +title + '\'' +
                 ", year=" + year +  '\'' +
                 "}";
+    }
+    @OneToMany(targetEntity = directors.class ,mappedBy = "movie_id",orphanRemoval = false, fetch = FetchType.LAZY)
+    private List<directors> directors;
+
+    public List<directors> getDirectors() {
+        return directors;
+    }
+
+    public void setDirectors(List<directors> directors) {
+        this.directors = directors;
     }
 }

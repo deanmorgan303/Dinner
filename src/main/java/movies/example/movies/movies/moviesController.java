@@ -1,5 +1,6 @@
 package movies.example.movies.movies;
 
+import movies.example.movies.movies_directors.movies_directors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -39,9 +40,14 @@ public class moviesController {
        return MoviesService.getAllMoviesPage(offset,pageSize);
   }
 
-  @GetMapping(path="director/{directorId}")
-    public List<String> getMoviesByDirector(@PathVariable("directorId")Long directorId){
-       return null;
+  @GetMapping(path="directors/all")
+    public List<movies_directors> getMoviesByDirector(){
+       return MoviesService.getMoviesDirectors();
+  }
+
+  @GetMapping(path="director/{id}")
+    public List<movies_directors> getMoviesByDirectorID(@PathVariable("id") Long id){
+       return MoviesService.getMoviesByDirectorID(id);
   }
 
 }

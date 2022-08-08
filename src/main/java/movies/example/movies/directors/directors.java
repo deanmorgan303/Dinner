@@ -1,8 +1,13 @@
 package movies.example.movies.directors;
+import movies.example.movies.movies.movies;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 @Entity
 @Table
 public class directors {
+    @Column(name = "movie_id")
     private Long movie_id;
     @javax.persistence.Id
     @Column(name = "person_id", nullable = false)
@@ -39,4 +44,10 @@ public class directors {
                 "director_id" +  person_id+
                 " ,movie_id" + movie_id + "}" ;
     }
+
+    /*@ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="movie",referencedColumnName = "movie_id",insertable = false,updatable = false)
+    @Fetch(FetchMode.JOIN)
+    private movies movie;*/
 }
+
