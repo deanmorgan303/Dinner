@@ -19,8 +19,8 @@ public class directorsController {
     }
 
     @GetMapping
-    public List<directors> getDirectors(){
-        return DirectorsService.getDirectors();
+    public List<directors> getALLDirectors(){
+        return DirectorsService.getAllDirectors();
     }
 
     @GetMapping(path="/{personId}")
@@ -30,6 +30,10 @@ public class directorsController {
 
     }
 
+    @GetMapping(path="movie/{movieId}")
+    public List<directors> getDirectors(@PathVariable("movieId") Long movieId ){
+        return DirectorsService.getDirectors(movieId);
+    }
     @GetMapping(path="page/{offset}/{pageSize}")
     public Page<directors> getDirectorsPage(@PathVariable("offset") int offset,@PathVariable("pageSize")int pageSize){
         return DirectorsService.getAllDirectorsPage(offset,pageSize);

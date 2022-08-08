@@ -19,7 +19,7 @@ public class directorsService {
         this.DirectorsRepository = DirectorsRepository;
     }
 
-    public List<directors> getDirectors(){
+    public List<directors> getAllDirectors(){
         return DirectorsRepository.findAll();
 
     }
@@ -60,6 +60,11 @@ public class directorsService {
         List <directors> Director =DirectorsRepository.findDirectorbyId(personId);
 
            return Director;
+    }
+    @Transactional
+    public List<directors> getDirectors(long movieId){
+        List<directors> Movies =DirectorsRepository.findMovieId(movieId);
+        return Movies;
     }
 
     @Transactional

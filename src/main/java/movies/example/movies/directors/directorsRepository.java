@@ -13,7 +13,7 @@ public interface directorsRepository extends JpaRepository<directors,Long>{
     List <directors> findDirectorbyId(Long id);
 
     @Query("SELECT s FROM directors s where s.movie_id=?1")
-    Optional<directors> findMovieId(long id);
+    List<directors> findMovieId(long id);
 
 
 }
