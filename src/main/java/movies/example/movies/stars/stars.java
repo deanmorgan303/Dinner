@@ -5,8 +5,10 @@ import javax.persistence.*;
 @Entity
 @Table
 public class stars {
-    private Long movie_id;
     @javax.persistence.Id
+    @Column(name="movie_id")
+    private Long movie_id;
+
     @Column(name="person_id",nullable = false)
     private Long person_id;
 

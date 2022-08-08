@@ -1,6 +1,7 @@
 package movies.example.movies.movies;
 
 import movies.example.movies.directors.directors;
+import movies.example.movies.stars.stars;
 import javax.persistence.*;
 import java.util.List;
 
@@ -70,5 +71,17 @@ public class movies {
 
     public void setDirectors(List<directors> directors) {
         this.directors = directors;
+    }
+
+    @OneToMany (targetEntity = stars.class,mappedBy = "movie_id",orphanRemoval = false,fetch = FetchType.LAZY)
+
+    private List<stars> stars;
+
+    public List<stars> getStars() {
+        return stars;
+    }
+
+    public void setStars(List<stars> stars) {
+        this.stars = stars;
     }
 }

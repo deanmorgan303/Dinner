@@ -1,6 +1,7 @@
 package movies.example.movies.movies;
 
 import movies.example.movies.movies_directors.movies_directors;
+import movies.example.movies.movies_stars.movies_stars;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -49,5 +50,16 @@ public class moviesController {
     public List<movies_directors> getMoviesByDirectorID(@PathVariable("id") Long id){
        return MoviesService.getMoviesByDirectorID(id);
   }
+
+  @GetMapping(path="stars/all")
+    public List<movies_stars> getMovieStars(){
+       return MoviesService.getMovieStars();
+  }
+
+  @GetMapping(path="star/{id}")
+    public List<movies_stars> getMoviesByStarID(@PathVariable("id")Long id){
+     return MoviesService.getMoviesByStarID(id);
+  }
+
 
 }
