@@ -16,7 +16,7 @@ public interface moviesRepository extends JpaRepository<movies,Long>{
     Optional <movies> findMovieById(long id);
 
     @Query("SELECT s FROM movies s where s.title=?1")
-    Optional <movies> findMovieByTitle(String title);
+    List <movies> findMovieByTitle(String title);
 
     @Query("select count(s)>0 from movies s where s.title=?1")
     boolean existByTittle(String Tittle);

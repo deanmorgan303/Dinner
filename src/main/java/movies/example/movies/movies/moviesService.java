@@ -89,9 +89,9 @@ public class moviesService {
     public List<movies> getMovieByTitle(String tittle){
 
         boolean exist =MoviesRepository.existByTittle(tittle);
-        Optional <movies> optionalMovies = MoviesRepository.findMovieByTitle(tittle);
+        List<movies> Movies = MoviesRepository.findMovieByTitle(tittle);
 
-        List<movies> Movies =optionalMovies.stream().toList();
+        //List<movies> Movies =optionalMovies.stream().toList();
 
         if (!exist){
             throw new IllegalStateException("movie not found");
