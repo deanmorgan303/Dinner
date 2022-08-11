@@ -13,7 +13,7 @@ public class userConfig {
     CommandLineRunner userCommandLineRunner (appUserService service){
 
     return args->{
-         List<AppUser> allUsers=service.getUsers();
+         /*List<AppUser> allUsers=service.getUsers();
          System.out.println("Gazazzzzzzaazzazazazazzazazazazazaz");
          System.out.println(allUsers);
          service.saveRole(new Role(Long.valueOf(5690),"ROLE_USER"));
@@ -23,7 +23,8 @@ public class userConfig {
          service.saveUser(new AppUser(null,"wilson6789@gmail.com","password1678",new ArrayList<>()));
 
          service.addRoleToUser(Long.valueOf(5690),"ROLE_USER");
-         service.addRoleToUser(Long.valueOf(7895),"ROLE_ADMIN");
+         service.addRoleToUser(Long.valueOf(7895),"ROLE_ADMIN");*/
+        service.getUsers();
     };
     }
 }
