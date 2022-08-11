@@ -6,6 +6,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,14 +22,18 @@ public class appUserService implements UserDetailsService {
 
     private final appUserRepository AppUserRepository;
     private final roleRepository RoleRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public appUserService (appUserRepository AppUserRepository,roleRepository RoleRepository){
+    public appUserService (appUserRepository AppUserRepository,roleRepository RoleRepository,PasswordEncoder passwordEncoder){
+
         this.AppUserRepository= AppUserRepository;
         this.RoleRepository = RoleRepository;
+        this.passwordEncoder =passwordEncoder;
      }
 
      public AppUser saveUser (AppUser user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return AppUserRepository.save(user);
      }
 
@@ -36,9 +41,10 @@ public class appUserService implements UserDetailsService {
         return RoleRepository.save(role);
      }
 
-     public void addRoleToUser (Long Id,String roleName){
-        Optional<AppUser> optionalUser =AppUserRepository.findById(Id);
-        AppUser user= optionalUser.get();
+     public void addRoleToUser (String username,String roleName){
+        //Optional<AppUser> optionalUser =AppUserRepository.findById(Id);
+        //AppUser user= optionalUser.get();
+         AppUser user = AppUserRepository.findByUsername(username);
         Role role =RoleRepository.findByName(roleName);
         user.getRoles().add(role);
      }

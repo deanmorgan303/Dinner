@@ -13,18 +13,18 @@ public class userConfig {
     CommandLineRunner userCommandLineRunner (appUserService service){
 
     return args->{
-         /*List<AppUser> allUsers=service.getUsers();
-         System.out.println("Gazazzzzzzaazzazazazazzazazazazazaz");
-         System.out.println(allUsers);
-         service.saveRole(new Role(Long.valueOf(5690),"ROLE_USER"));
-         service.saveRole(new Role(Long.valueOf(7895),"ROLE_ADMIN"));
+         //List<AppUser> allUsers=service.getUsers();
+         //System.out.println("Gazazzzzzzaazzazazazazzazazazazazaz");
+         //System.out.println(allUsers);
+         //service.saveRole(new Role(null,"ROLE_USER"));
+         //service.saveRole(new Role(null,"ROLE_ADMIN"));
 
-         service.saveUser(new AppUser(null,"goodman404@gmail.com","password1234",new ArrayList<>()));
-         service.saveUser(new AppUser(null,"wilson6789@gmail.com","password1678",new ArrayList<>()));
+         //service.saveUser(new AppUser(null,"DeanTestUser89","password1234",new ArrayList<>()));
+         //service.saveUser(new AppUser(null,"DeanTestUser3","password1678",new ArrayList<>()));
 
-         service.addRoleToUser(Long.valueOf(5690),"ROLE_USER");
-         service.addRoleToUser(Long.valueOf(7895),"ROLE_ADMIN");*/
-        service.getUsers();
+         //service.addRoleToUser("DeanTestUser89","ROLE_USER");
+         //service.addRoleToUser("DeanTestUser3","ROLE_ADMIN");
+         service.getUsers();
     };
     }
 }

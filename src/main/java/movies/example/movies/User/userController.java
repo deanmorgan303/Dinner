@@ -40,7 +40,7 @@ public class userController {
 
     @PostMapping(path="/role/addrole")
     public ResponseEntity<?> addRoleToUser( @RequestBody  roleToUserForm form){
-        AppUserService.addRoleToUser(form.getId(), form.getRoleName());
+        AppUserService.addRoleToUser(form.getUsername(), form.getRoleName());
         return ResponseEntity.ok().build();
     }
 
@@ -49,6 +49,6 @@ public class userController {
 }
 @Data
 class roleToUserForm {
-    private Long id;
+    private String username;
     private String roleName;
 }
