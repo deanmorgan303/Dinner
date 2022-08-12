@@ -42,10 +42,9 @@ public class appUserService implements UserDetailsService {
      }
 
      public void addRoleToUser (String username,String roleName){
-        //Optional<AppUser> optionalUser =AppUserRepository.findById(Id);
-        //AppUser user= optionalUser.get();
-         AppUser user = AppUserRepository.findByUsername(username);
-        Role role =RoleRepository.findByName(roleName);
+
+        AppUser user = AppUserRepository.findByUsername(username);
+        Role role =RoleRepository.findByName(roleName).get(0);
         user.getRoles().add(role);
      }
 
@@ -63,8 +62,10 @@ public class appUserService implements UserDetailsService {
             throw new UsernameNotFoundException("User  not found ");
         }
         else{
+            System.out.println(user);
             System.out.println("we found the person ");
         }
+
         Collection<SimpleGrantedAuthority> authorities=new ArrayList<>();
 
         user.getRoles().forEach( role -> {

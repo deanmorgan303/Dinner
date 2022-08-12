@@ -2,6 +2,8 @@ package movies.example.movies.filter;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.MediaType;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class customAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -26,7 +30,8 @@ public class customAuthenticationFilter extends UsernamePasswordAuthenticationFi
      }
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        String username = request.getParameter("username");
+
+         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
         System.out.println(" User Info from login");
@@ -57,7 +62,13 @@ public class customAuthenticationFilter extends UsernamePasswordAuthenticationFi
                 .sign(algorithm);
 
 
-        response.setHeader("accessToken",accessToken);
-        response.setHeader("refreshToken",refreshToken);
+        //response.setHeader("accessToken",accessToken);
+        //response.setHeader("refreshToken",refreshToken);
+
+        Map<String,String> Tokens =new HashMap<>();
+        Tokens.put("accessToken",accessToken);
+        Tokens.put("refreshToken",refreshToken);
+        response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        new ObjectMapper().writeValue(response.getOutputStream(),Tokens);
     }
 }

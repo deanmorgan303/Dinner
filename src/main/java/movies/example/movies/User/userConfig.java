@@ -13,17 +13,15 @@ public class userConfig {
     CommandLineRunner userCommandLineRunner (appUserService service){
 
     return args->{
-         //List<AppUser> allUsers=service.getUsers();
-         //System.out.println("Gazazzzzzzaazzazazazazzazazazazazaz");
-         //System.out.println(allUsers);
+
          //service.saveRole(new Role(null,"ROLE_USER"));
          //service.saveRole(new Role(null,"ROLE_ADMIN"));
 
-         //service.saveUser(new AppUser(null,"DeanTestUser89","password1234",new ArrayList<>()));
-         //service.saveUser(new AppUser(null,"DeanTestUser3","password1678",new ArrayList<>()));
+         //service.saveUser(new AppUser(null,"vibe78","password1234",new ArrayList<>()));
+         //service.saveUser(new AppUser(null,"vision67","password1678",new ArrayList<>()));
 
-         //service.addRoleToUser("DeanTestUser89","ROLE_USER");
-         //service.addRoleToUser("DeanTestUser3","ROLE_ADMIN");
+         //service.addRoleToUser("vibe78","ROLE_USER");
+         //service.addRoleToUser("vision67","ROLE_ADMIN");
          service.getUsers();
     };
     }
