@@ -14,8 +14,8 @@ public class userConfig {
 
     return args->{
 
-         //service.saveRole(new Role(null,"ROLE_USER"));
-         //service.saveRole(new Role(null,"ROLE_ADMIN"));
+         service.saveRole(new Role(null,"ROLE_USER"));
+         service.saveRole(new Role(null,"ROLE_ADMIN"));
 
          //service.saveUser(new AppUser(null,"vibe78","password1234",new ArrayList<>()));
          //service.saveUser(new AppUser(null,"vision67","password1678",new ArrayList<>()));
