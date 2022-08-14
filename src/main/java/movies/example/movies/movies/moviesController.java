@@ -61,5 +61,16 @@ public class moviesController {
      return MoviesService.getMoviesByStarID(id);
   }
 
+  @PostMapping(path="/add")
+    public void addNewMovie (@RequestBody movies newMovie){
+       MoviesService.addNewMovie(newMovie);
+
+  }
+
+  @DeleteMapping(path="/delete/{movieId}")
+    public void deleteMovie(@PathVariable("movieId") Long movieId){
+     MoviesService.deleteMovie(movieId);
+  }
+
 
 }

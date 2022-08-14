@@ -2,6 +2,9 @@ package movies.example.movies.movies;
 
 import movies.example.movies.directors.directors;
 import movies.example.movies.stars.stars;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,6 +13,7 @@ import java.util.List;
 public class movies {
     @javax.persistence.Id
     @Column (name="id",nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String title ;
     private Long year;
@@ -63,6 +67,7 @@ public class movies {
                 "}";
     }
     @OneToMany(targetEntity = directors.class ,mappedBy = "movie_id",orphanRemoval = false, fetch = FetchType.LAZY)
+    @OnDelete(action= OnDeleteAction.CASCADE)
     private List<directors> directors;
 
     public List<directors> getDirectors() {
@@ -74,7 +79,7 @@ public class movies {
     }
 
     @OneToMany (targetEntity = stars.class,mappedBy = "movie_id",orphanRemoval = false,fetch = FetchType.LAZY)
-
+    @OnDelete(action=OnDeleteAction.CASCADE)
     private List<stars> stars;
 
     public List<stars> getStars() {
@@ -84,4 +89,6 @@ public class movies {
     public void setStars(List<stars> stars) {
         this.stars = stars;
     }
+
+
 }

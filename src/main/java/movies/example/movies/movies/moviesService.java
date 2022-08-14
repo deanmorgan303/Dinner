@@ -136,4 +136,23 @@ public class moviesService {
         return allMoviesByStarsId;
     }
 
+    public  movies addNewMovie( movies Movie){
+        Movie.setId(null);
+        return MoviesRepository.save(Movie);
+    }
+    @Transactional
+    public movies deleteMovie (Long Id){
+
+        Optional<movies> optionalMovie = MoviesRepository.findMovieById(Id);
+        boolean exists=MoviesRepository.existsById(Id);
+        if (!exists){
+            throw new IllegalStateException("movie not found");
+        }
+        else{
+            MoviesRepository.deleteById(Id);
+        }
+
+        return null;
+    }
+
 }

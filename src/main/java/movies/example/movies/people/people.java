@@ -6,6 +6,7 @@ import javax.persistence.*;
 public class people {
     @javax.persistence.Id
     @Column(name="id",nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
     private Long birth;
