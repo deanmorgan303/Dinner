@@ -1,5 +1,6 @@
 package movies.example.movies.people;
 
+import movies.example.movies.movies.movies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -99,6 +100,11 @@ public class peopleService {
     public Page<people> getPeoplePage(int offset ,int pageSize){
         Page <people> People= PeopleRepository.findAll(PageRequest.of(offset,pageSize));
         return People;
+    }
+
+    public people addPerson(people person){
+        person.setId(null);
+        return PeopleRepository.save(person);
     }
 
 

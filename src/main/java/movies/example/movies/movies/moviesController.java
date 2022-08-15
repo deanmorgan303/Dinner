@@ -72,5 +72,20 @@ public class moviesController {
      MoviesService.deleteMovie(movieId);
   }
 
+    @PostMapping(path="/updatetile/{movieId}/{newTitle}")
+    public void updateMovieName (@PathVariable("movieId") Long movieId,
+                                 @PathVariable("newTitle") String newTitle){
+        MoviesService.updateMovieName(movieId,newTitle);
+
+    }
+
+
+    @PostMapping(path="/updateyear/{movieId}/{updateYear}")
+    public void updateMovieYear (@PathVariable("movieId") Long movieId,
+                                 @PathVariable("updateYear") Long updateYear){
+        MoviesService.updateMovieYear(movieId,updateYear);
+
+    }
+
 
 }

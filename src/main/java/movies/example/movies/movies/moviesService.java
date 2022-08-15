@@ -155,4 +155,34 @@ public class moviesService {
         return null;
     }
 
+    @Transactional
+    public void updateMovieName (Long movieId ,String updatedTitle){
+        boolean exist =MoviesRepository.existsById(movieId);
+
+        Optional <movies> optionalMovie =MoviesRepository.findMovieById(movieId);
+        movies Movie =optionalMovie.get();
+
+        if (!exist){
+            throw new IllegalStateException("Director does not exit");
+        }
+        else {
+            Movie.setTitle(updatedTitle);
+        }
+    }
+
+    @Transactional
+    public void updateMovieYear(Long movieId ,Long updateYear){
+        boolean exist =MoviesRepository.existsById(movieId);
+
+        Optional <movies> optionalMovie =MoviesRepository.findMovieById(movieId);
+        movies Movie =optionalMovie.get();
+
+        if (!exist){
+            throw new IllegalStateException("Director does not exit");
+        }
+        else {
+            Movie.setYear(updateYear);
+        }
+    }
+
 }

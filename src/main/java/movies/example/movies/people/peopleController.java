@@ -1,4 +1,5 @@
 package movies.example.movies.people;
+import movies.example.movies.movies.movies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -36,4 +37,12 @@ public class peopleController {
     public Page<people> getPeoplePage (@PathVariable("offset") int offset,@PathVariable("pageSize")int pageSize){
         return PeopleService.getPeoplePage(offset,pageSize);
     }
+
+    @PostMapping(path="/add")
+    public void addNewMovie (@RequestBody people person){
+        PeopleService.addPerson(person);
+
+    }
+
+    
 }
