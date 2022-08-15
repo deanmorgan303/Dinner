@@ -43,6 +43,20 @@ public class peopleController {
         PeopleService.addPerson(person);
 
     }
+    @PostMapping(path="/updatetile/{personId}/{name}")
+    public void updatePersonName (@PathVariable("personId") Long personId,
+                                 @PathVariable("name") String name){
+        PeopleService.updateName(personId,name);
 
-    
+    }
+
+
+    @PostMapping(path="/updatebirth/{personId}/{year}")
+    public void updateMovieYear (@PathVariable("personId") Long personId,
+                                 @PathVariable("year") Long year){
+        PeopleService.updateBirth(personId,year);
+
+    }
+
+
 }
